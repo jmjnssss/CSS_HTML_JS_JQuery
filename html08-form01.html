@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 
+		get : 데이터가 보여지면서 전달 
+		post : 데이터가 숨겨져서 전달	
+		
+	-->
+	<form action="html08-form01-res.html" method="post">
+		<fieldset>
+			<legend>회원가입</legend>
+		
+			<p>아이디 : <input type="text" name="id" /></p>
+			<p>비밀번호 : <input type="password" name="pw"></p>
+			<p>이메일 수신여부<br/>
+				<input type="radio" name="radio" value="y"/> Yes<br/>
+				<input type="radio" name="radio" value="n"/> No
+				<!-- radio button은 1개만 선택 가능! -->
+			
+			</p>
+			<p>관심분야<br/>
+				<input type="checkbox" name="cb1" value="html"/> HTML <br/>
+				<input type="checkbox" name="cb2" value="css"/> CSS <br/>
+				<input type="checkbox" name="cb3" value="js"/> JavaScript <br/>
+				<input type="checkbox" name="cb4" value="jp"/> JQuery <br/>
+			</p>
+			<p>
+				<input type="reset" value="취소" />
+				<input type="button" value="그냥 버튼" />
+				<input type="submit" value="전송" />
+			</p>
+			<p>
+				<input type="file"  />
+				<input type="hidden" name="hd" value="my hidden value" />
+			</p>
+		</fieldset>
+	</form>
+
+		<!-- 어이 어이 관심 분야 다 체크했더니 이렇게 나옴 -->
+		<!-- ?id=%EC%96%B4%EC%9D%B4&pw=djdl&radio=y&cb1=html&cb2=css&cb3=js&cb4=jp&hd=my+hidden+value -->
+		<!-- ? 뒤에 나오는건 쿼리스트링 (data)-->
+
+
+</body>
+</html>
