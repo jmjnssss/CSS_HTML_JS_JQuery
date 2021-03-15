@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	// select 태그의 속성 : options, selectedIndex, selected
+	function show01() {
+		var food = document.getElementsByName("food")[0];
+		// selectedIndex : 선택한 option 의 index 반환 
+		var idx = food.selectedIndex;
+		// options : select 태그가 가진 option 태그들
+		var foodName = food.options[idx].value;
+		alert(foodName + " 먹어야지!");
+	}
+
+
+	/*
+	function show02() {
+		var res = "";
+		// 1. select (name = food) 가져오자.
+		var food = document.getElementsByName("food");
+		// 2. food가 가진 옵션들을 반복
+		for (var i = 0; i < food.length; i++) {
+			if (food[i].selected) {
+				// 3. 옵션들 중 선택되어 있다면, res += 옵션의 value
+				document.getElementsByName(food[i].value) = res;
+			}
+			// 4.출력
+			alert(res + "먹고시퓨다..");
+		}
+	}
+	*/
+	
+	function show02() {
+		var res = "";
+		
+		// 1. select (name = food) 가져오자.
+		var food = document.getElementsByName("food")[1];	// food 이름 두개 ＊2번째 푸드이름 가져옴
+		alert(food + " : " + typeof(food));					// 객체
+		alert(food.options + " : " + typeof(food.options));	// Collection = NodeList 배열이구나
+		
+		// 2. food가 가진 옵션들을 반복
+		for (var i=0; i < food.options.length; i++){
+			// 3. 옵션들 중 선택되어 있다면, 
+			if(food.options[i].selected) {
+				// res += 옵션의 value
+				res += food.options[i].value + ", ";
+			}
+		}
+		
+		// 4.출력
+		alert(res + "먹고시퓨다..");
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<h1>음식 선택하기</h1>
+
+	<form>
+		<select name="food" onchange="show01();">	<!-- on__ : 이벤트 -->
+			<option>--선택--</option>
+			<option value="한우스테이크">한우스테이크</option>
+			<option value="물냉면">물냉면</option>
+			<option value="스시">스시</option>
+			<option value="샌드위치">샌드위치</option>
+			<option value="육회">육회</option>
+		</select>
+	<br/><br/><br/><br/><br/><br/>
+		<select name="food" multiple="multiple" size="3">	<!-- multiple : 여러개 선택할 수 있는  -->
+			<option value="한우스테이크">한우스테이크</option>
+			<option value="물냉면">물냉면</option>
+			<option value="스시">스시</option>
+			<option value="샌드위치">샌드위치</option>
+			<option value="육회">육회</option>
+		</select>
+		<input type="button" value="선택" onclick="show02();">
+	</form>
+
+</body>
+</html>

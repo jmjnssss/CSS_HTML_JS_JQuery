@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	// 명시적 함수
+	function func01() {
+		alert("명시적 함수");
+	}
+	
+	// 익명 함수
+	var func02 = function(){
+		alert("익명 행수");
+	} // 함수 = 값;
+	
+	
+	//======================================================//
+	
+	function literalPrn(literal){	// 파라미터 변수 var 생략 ex.(String test) 
+		
+		//alert(literal); 				//literal에 전달된 값은 익명함수다
+		// 함수면 괄호 붙이면 호출된다. 		ex.a(); func02();
+		
+		literal("안녕하세요, 리터럴 입니다.");
+	
+	}
+	// function 함수이름(파라미터)
+	// function(msg){alert(msg);} -> literal로 가서 호출됨
+	// 변수안에 함수 리터럴 안에 msg 들어가있음
+	
+	
+	function func03(){
+		// 함수가 파라미터로 전달됨 (함수 리터럴) -> 함수 = 값 ☆함수가 값으로 전달된다.
+		literalPrn(
+								function(msg){				// literalPrn(literal)
+									alert(msg);				// = literal 함수 값
+								}							// argument ☆ msg는 파라미터
+					);
+	}
+	
+	// arguments : 함수에 전달되는 아규먼트들을 배열의 값으로 가짐
+	function valTest(){
+		var res = "";
+		
+		for(var i = 0; i < arguments.length; i++){
+			res += arguments[i];
+		}
+		
+		alert(res);
+		
+	}
+	// closure : 외부함수 안에 있는 내부함수. (내부함수에서 외부함수에 있는 변수, 파라미터 등 접근 가능)
+	function closureTest(val) {
+		var msg = "!!!";
+		
+		function addVal() {				//		
+			alert(val + msg);			// 함수를 만들어만 놓음
+		}								//
+		
+		return addVal;					// 메소드가 기능 수행하고 난뒤 반환하는 값
+										// addVal()이라는 함수자체를 리턴  **val과 !!!dksla 
+	}
+	
+	function amEdu(val) {
+		closureTest(val)();				// closureTest라는 함수를 호출한다.
+										// -> addVal(); 넣는건 val이고 closureTest 기능을 함
+										// (); 는 addVal 호출(실행)
+		// 1. closureTest(val) -> addVal 리턴
+		// 2. addVal();
+		// 3. alert(val + msg); 실행
+	}
+
+</script>
+
+</head>
+<body>
+
+	<h1>함수!!</h1>
+
+	<h2>함수의 종류</h2>
+	<p onclick="func01();">명시적 함수</p>
+	<p onclick="func02();">익명 함수</p>	
+	<p onclick="func03()">함수 리터럴 (리터럴 함수)</p>
+		<!-- ; 안써줘도 괜춘 -->
+		
+	<h2 onclick="valTest('kh ', '정보교육원 ', 'qclass');">args(arguments) 속성</h2>
+	
+	<h2>클로저(내부함수)</h2>
+	<label for="am">오전강의</label>	
+	<input type="text" id="am" value="" />	
+	<input type="button" value="클릭!" onclick="amEdu(am.value);" />
+		
+
+</body>
+</html>

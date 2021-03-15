@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+	img{
+		vertical-align: middle;
+		width: 300px;
+		height: 300px;
+	}
+	a{
+		font-size: 30px;
+		text-decoration: none;
+	}
+
+</style>
+<script type="text/javascript">
+	// DOM : Document OBject Model 문서 객체 모델 
+	// 문서의 모든 요소를 jsc를 이용하여 조작할 수 있도록 객체를 사용해 문서를 해석하는 방법
+	// 웹 문서의 텍스트, 이미지, 표 등 모든 요소는 모두 객체라는 의미
+	
+	window.onload=function(){				// 객체 가져오기
+		var anchs = document.querySelectorAll("a");	// NodeList (주로 class 사용)
+		var img = document.querySelector("img");	// id, class, 태그를 사용해서 접근하는 함수
+		var cnt = 1;
+		// alert("hi");
+			
+		anchs[0].onclick=function(){		// 이벤트 연결
+			var imgAlt = img.getAttribute("alt");	// HTML 태그의 속성에 접근
+			if (imgAlt == "img01"){
+				cnt = 6;
+				img.setAttribute("alt", "img03");	// HTML 태그 속성 수정
+				img.setAttribute("src", "resources/image/img0"+cnt+".png");
+			} else {
+				// --cnt; 해도 됨
+				img.setAttribute("alt", "img0"+(--cnt));
+				img.setAttribute("src", "resources/image/img0"+cnt+".png")
+			}
+		}
+		
+		anchs[1].onclick=function(){
+			var imgAlt = img.getAttribute("alt");
+			if (imgAlt == "img06"){
+				cnt = 1;
+				img.setAttribute("alt", "img01");
+				img.setAttribute("src", "resources/image/img0"+cnt+".png");
+			} else{
+				cnt++;
+				img.setAttribute("alt", "img0"+cnt);
+				img.setAttribute("src", "resources/image/img0"+cnt+".png")
+			}
+		}
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div>
+		<a href="#" id="it">◀</a>
+		<img alt="img01" src="resources/image/img01.png">
+		<a href="#" id="gt">▶</a>
+	</div>
+	
+</body>
+</html>

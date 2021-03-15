@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>윈도우 연습01</title>
+
+<style type="text/css">
+/*
+	id라서 #
+*/							
+	#regist {	
+		border: 1px solid black;
+		background: pink;
+		position: absolute;
+		top: 200px;
+		left: 500px;
+		display : none;
+	}
+</style>
+
+<!--	
+	absolute : 절대적인 
+	relative : 상대적인  	
+
+	display : none;			//공간을 차지하지 않는다 (만들어지지 않은 상태)
+	visibility: hidden;		//공간을 차지하고, 보이지 않는다 (만들어져 있는 상태)
+ -->
+
+<script type="text/javascript">
+
+	/* 창열기 */
+	function openWin() {
+		var url = "js14_window02.html";
+		var title = "myframe";
+		//var title = "";
+		var prop = "top=200px,left=600px,width=500px,height=500px";
+		// 속성 안잡아주면 탭으로 열림
+		window.open(url, title, prop);
+				//  경로   이름    옵션
+				// 		열어줄 위치
+	}
+
+	/* 회원가입 */
+	function registForm() {
+		document.getElementById("regist").style.display = "block";
+		document.body.style.background = "gray";
+
+		var btns = document.getElementsByName("btn");
+		for ( var i in btns) { 
+			// for (var i = 0; i < btns.length; i++){}
+			btns[i].disabled = "disabled";
+		}
+	}
+	
+	/* 확인 */
+	function closeWin() {
+		document.getElementById("regist").style.display = "none";
+		document.body.style.background = "white";
+
+		var btns = document.getElementsByName("btn");
+		for ( var i in btns) {
+			btns[i].disabled = "";
+		}
+	}
+	
+	/* 아이디 네모칸 클릭 */
+	function idchk() {
+		alert("중복체크를 확인하세요");
+	}
+	
+	/* 중복체크 */
+	function idCheck() {
+		open("js14_window03.html", "", "width=300px,height=300px");
+	}
+</script>
+
+</head>
+<body>
+
+	<h1>window객체</h1>
+	
+	<!-- <br/> 안쳐도 됨 -->
+	<pre>
+	프로퍼티
+	 -document
+	 -history
+	 -location
+	 -navigator
+	 -screen
+	 -frames
+	 -parent
+	 -top
+	 -self
+	메서드
+	 -alert()
+	 -confirm()
+	 -prompt()
+	 -back()
+	 -forward()
+	 -setInterval()
+	 -clearInterval()
+	 -setTimeout()
+	 -open()
+	 -close()
+	 -scroll(),scrollBy(), scrollTo() 
+	</pre>
+
+	<div id="f1">
+		<h1>팝업창 만들기</h1>
+		<button onclick="openWin()" name="btn">창열기</button>
+		<hr>
+		<h1>회원가입하기(div팝업창)</h1>
+		<button onclick="registForm()" name="btn">회원가입</button>
+	</div>
+
+	<!-- 회원가입폼 시작 -->
+	<div id="regist">
+		<form>
+			<table>
+				<caption>회원가입</caption>
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="id" onclick="idchk()" readonly="readonly" /> 
+					<input type="button" value="중복체크" onclick="idCheck()" /></td>
+				</tr>
+				<tr>
+					<td>패스워드</td>
+					<td><input type="password" name="pwd" alt="" style="color: red;" checked="checked" /></td>
+					<!-- 함정 -->
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="button" value="확인" onclick="closeWin()" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- 회원가입폼 종료 -->
+
+	<br/><br/><br/>
+	<!-- 인라인프레임 : 현재문서 안에 다른 html 페이지를 삽입 -->
+	<iframe name="myframe"></iframe>
+	
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</body>
+</html>
