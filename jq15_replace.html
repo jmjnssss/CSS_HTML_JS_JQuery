@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function() {
+		$("button:first").click(function() {
+			// target.replaceWith(newContent);
+			$("p").replaceWith("<p><b>replaceWith</b></p>")
+		});
+		$("button:last").click(function() {
+			// newContent.replaceAll(target)
+			$("<p><b>replaceAll</b></p>").replaceAll("p");
+		});
+	});
+	/*
+	
+	The '.replaceAll()' method is similar to '.replaceWith()', 
+	but with the source and target reversed. 
+	Consider this DOM structure:
+		
+	replaceWith 는 funtion도 가능하다.
+	
+	*/
+
+</script>
+
+</head>
+<body>
+
+	<div>
+		<p>DOM 대체</p>
+	</div>
+	
+	<button>바꾸기 (replaceWith)</button>
+	<!-- 새콘텐츠로 교체하고 제거된 요소 집합을 반환 -->
+	<br/>
+	<button>바꾸기 (replaceAll)</button>
+
+
+
+</body>
+</html>

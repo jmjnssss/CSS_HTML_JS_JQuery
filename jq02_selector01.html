@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function(){
+		$("div:eq(0)").css({"border" : "1px solid red", "width" : "400px", "height" : "200px"});
+		$("#view").css("border", "1px solid red").css("width" , "400px").css("height" , "200px");		
+	});
+	
+	// tag로 선택
+	function sel01() {
+		$("span").css("color", "red");
+		$("#view").text('$("span").css("color","red");');
+	}
+	
+	// id로 선택
+	function sel02() {
+		jQuery("#t1").css("color","hotpink");	// $대신 jQuery 써보기
+		jQuery("#view").text('jquery("#t1").css("color","hotpink");');
+		// '' "" 구분 커다란 한문장은 싱글컨테이션 묶어줌 ("" 써도 괜찮음) 
+		// 문장 안에 문장은 구분 해야함
+	}
+	
+	// class로 선택
+	function sel03() {
+		$(".t2").css("color","blue");
+		$("#view").text('jquery(".t2").css("color","blue");');
+	}
+	
+	// parent child 선택
+	function sel04() {
+		$("li span").css("color","violet");
+		$("#view").text('$("li span").css("color","violet");');
+	}
+	
+	
+	// parent > child 선택
+	function sel05() {
+		$("li > span").css("color","brown");
+		$("#view").text('$("li > span").css("color","brown");');
+		// <b> 껴있어서 3번째줄은 안된거 -> li 자식 b 자식 span
+	}
+	
+	//
+	function sel06() {
+		$("li:nth-child(odd)").css("background-color","yellow");
+		$("#view").text('$("li:nth-child(odd)").css("background-color","yellow");');
+		/*
+			-> n : n번째(1부터)	odd : 홀수번째		even : 짝수번째
+			6번째 자식 요소를 찾아서 (1부터 시작) ＊eq는 nodelist 배열에서 가져온거라 0부터
+		 	odd는 홀수번째
+			even은 짝수번째
+		*/
+		
+	
+	}
+	
+	//
+	function sel07() {
+		$("li:first-child").css("background-color","aquamarine");
+		$("view").text('$("li:first-child").css("background-color","aquamarine");');		
+	}
+	
+	//
+	function sel08() {
+		$("li:last-child").css("background-color","black").css("color","white");
+		$("#view").text('$("li:last-child").css("background-color","black").css("color","white");');
+	}
+
+	function cls() {
+		$("*").css("background-color","").css("color","black");
+		//$("li").css("background-color","").css("color","black");
+		//$("span").css("color","black");
+		$("view").text('');
+	}
+	
+</script>
+
+</head>
+<body>
+	
+	<h1>selector 표현식</h1>
+
+	<div>
+		<ul>
+			<li><span>tag로 선택</span></li>
+			<li id="t1">id로 선택</li>
+			<li class="t2">class로 선택</li>
+			<li><span>parent child 선택</span></li>
+			<li><b><span>parent &gt; child</span></b> 선택</li>
+			<li>:nth-child(n/odd/evn)로 선택</li>
+			<li>:first-child로 선택</li>
+			<li>:last-child로 선택</li>
+		</ul>
+	</div>
+	
+	<br/>
+	
+	<div>
+		<button onclick="sel01();">tag</button>
+		<button onclick="sel02();">id</button>
+		<button onclick="sel03();">class</button>
+		<button onclick="sel04();">p c</button>
+		<button onclick="sel05();">p &gt; c</button>
+		<button onclick="sel06();">nth</button>
+		<button onclick="sel07();">first</button>
+		<button onclick="sel08();">last</button>
+		<br/>
+		<button onclick="cls();">clear</button>
+	</div>
+	
+	<h2>코드</h2>
+	<div id="view"></div>
+	
+</body>
+</html>
